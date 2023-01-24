@@ -19,8 +19,11 @@ def show_students(subject_number):
             for key, values in item[i].items():
                     mark_list = [str(x) for x in values]
                     marks = ", ".join(mark_list)
-                    print(f'{key}: {marks}')
+                    print(f'{key:20}: {marks}')
             
 
+def who_answers(subject):
+     students = controller.data[subject]
+     name = input('Кто пойдет отвечать к доске? ')
 
     

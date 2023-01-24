@@ -9,8 +9,8 @@ def start():
     
     while True:
         class_selection = view.get_klass()
-        
         data = module.read_file(class_selection)
         subject = view.get_subject(data)
         view.show_students(subject)
+        student = view.who_answers(subject)
 
