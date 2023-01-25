@@ -1,21 +1,31 @@
-import module
+import model
 import view
-
-
-#global subject
 
 def start():
     
     while True:
-        class_selection = view.get_klass()
+        global selection_class
         global data
-        data = module.read_file(class_selection)
-        subject = view.get_subject(data)
-        view.show_students(subject)
-        study(subject)
+        selection_class = view.get_klass()        
+        data = model.read_file(selection_class)
+        is_exit = False
+        while not is_exit:
+            is_exit = subject_selection()
         
+def subject_selection():
+    
+    subject = view.get_subject(data)
+    while subject != -1:
+        study(subject)
+        subject = view.get_subject(data)
+    return True
+
 def study(index):
-    student = view.who_answers(index)
-    mark = view.set_mark()
-    module.save_mark(mark, student, index)
+    student = ""
+    while student != 'Exit':
+        student = view.who_answers(index)
+        mark = view.set_mark(student)
+        model.save_mark(mark, student, index)
+        model.save_file(selection_class)
+    
 

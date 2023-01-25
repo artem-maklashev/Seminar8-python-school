@@ -17,5 +17,10 @@ def save_mark(mark, student, index):
         for student_, marks in students[0].items():
             if student_ == student:
                 marks.append(mark)
+    
 
-    print(subject)
+def save_file(file):
+    file_name = file + '.json'
+    with open(file_name, "w", encoding='utf-8') as data_file:
+        json.dump(controller.data, data_file,
+                  indent=2, ensure_ascii=False)
